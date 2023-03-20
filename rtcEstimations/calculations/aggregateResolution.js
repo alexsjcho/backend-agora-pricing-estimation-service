@@ -1,11 +1,11 @@
-import { RESOLUTION } from "../constant/constant";
+import { RESOLUTION } from "../constants/videoRtcConstants";
 
-const totalResolutionForUser = (videoProfile, noOfHost, snLogic) => {
+const totalResolutionForHosts = (videoProfile, hostCount, channelMode) => {
   let aggregateHost = 0;
-  if (snLogic === true) {
-    aggregateHost = noOfHost - 1;
+  if (channelMode === "conference") {
+    aggregateHost = hostCount - 1;
   } else {
-    aggregateHost = noOfHost;
+    aggregateHost = hostCount;
   }
   switch (videoProfile) {
     case 120:
@@ -38,8 +38,8 @@ const videoStreamingVariant = (value) => {
     return RESOLUTION.TWOKPLUS;
   }
 };
-export const aggregateVideo = (videoProfile, noOfHost, snLogic) => {
-  const value = totalResolutionForUser(videoProfile, noOfHost, snLogic);
+export const aggregateVideo = (videoProfile, hostCount, channelMode) => {
+  const value = totalResolutionForUser(videoProfile, hostCount, channelMode);
   const resolution = videoStreamingVariant(value);
   return resolution;
 };
