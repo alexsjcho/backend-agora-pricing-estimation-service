@@ -38,8 +38,12 @@ const videoStreamingVariant = (value) => {
     return RESOLUTION.TWOKPLUS;
   }
 };
-export const aggregateVideo = (videoProfile, hostCount, channelMode) => {
-  const value = totalResolutionForUser(videoProfile, hostCount, channelMode);
+export const calculateAggregateVideoResolution = (
+  videoProfile,
+  hostCount,
+  channelMode
+) => {
+  const value = totalResolutionForHosts(videoProfile, hostCount, channelMode);
   const resolution = videoStreamingVariant(value);
   return resolution;
 };

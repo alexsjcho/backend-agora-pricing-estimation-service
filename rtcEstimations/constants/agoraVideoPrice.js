@@ -1,0 +1,12 @@
+export const PREMIUMSTREAMING = {
+  HD: 3.99,
+  FULLHD: 8.99,
+  TWOK: 15.99,
+  TWOKPLUS: 35.99,
+};
+export const STANDARDSTREAMING = {
+  HD: 1.99,
+  FULLHD: 4.59,
+  TWOK: 7.99,
+  TWOKPLUS: 17.99,
+};
