@@ -1,27 +1,27 @@
 import { RESOLUTION } from "../constants/videoRtcConstants";
 
-const totalResolutionForHosts = (videoProfile, hostCount, channelMode) => {
+const totalResolutionSubscribed = (videoProfile, hostCount, channelMode) => {
   let aggregateHost = 0;
   if (channelMode === "conference") {
-    aggregateHost = hostCount - 1;
+    aggregateHostCount = hostCount - 1;
   } else {
-    aggregateHost = hostCount;
+    aggregateHostCount = hostCount;
   }
   switch (videoProfile) {
     case 120:
-      return 120 * 160 * aggregateHost;
+      return 120 * 160 * aggregateHostCount;
     case 180:
-      return 180 * 320 * aggregateHost;
+      return 180 * 320 * aggregateHostCount;
     case 240:
-      return 240 * 320 * aggregateHost;
+      return 240 * 320 * aggregateHostCount;
     case 360:
-      return 360 * 640 * aggregateHost;
+      return 360 * 640 * aggregateHostCount;
     case 480:
-      return 480 * 640 * aggregateHost;
+      return 480 * 640 * aggregateHostCount;
     case 720:
-      return 720 * 1280 * aggregateHost;
+      return 720 * 1280 * aggregateHostCount;
     case 1080:
-      return 1080 * 1920 * aggregateHost;
+      return 1080 * 1920 * aggregateHostCount;
     default:
       return 120 * 160;
   }
@@ -43,7 +43,7 @@ export const calculateAggregateVideoResolution = (
   hostCount,
   channelMode
 ) => {
-  const value = totalResolutionForHosts(videoProfile, hostCount, channelMode);
+  const value = totalResolutionSubscribed(videoProfile, hostCount, channelMode);
   const resolution = videoStreamingVariant(value);
   return resolution;
 };
