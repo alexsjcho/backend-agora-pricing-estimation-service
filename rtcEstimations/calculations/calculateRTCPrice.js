@@ -1,17 +1,23 @@
-import { calculateAggregateVideoResolution } from "./calculateResolution";
+const calculateAggregateVideoResolution = require("../calculations/calculateResolution");
 
-function calculateRTCPrice(
-  sessionDuration,
+module.exports = function calculateRTCPrice(
+  hostVideoProfile,
   hostCount,
   audienceCount,
-  channelMode,
-  videoVariantPrice
+  sessionDuration,
+  channelMode
 ) {
   let totalRtcPrice = 0;
+  let hostAggregateResolution =
+    calculateAggregateVideoResolution(hostVideoProfile);
+
   if (channelMode === "conference") {
     hostCount * sessionDuration * videoVariantPrice;
   } else {
-    hostPrice = hostCount * sessionDuration * videoVariantPrice;
-    audiencePrice = audienceCount * sessionDuration * videoVariantPrice;
+    hostRtcPrice = hostCount * sessionDuration * videoVariantPrice;
+    audienceRtcPrice = audienceCount * sessionDuration * videoVariantPrice;
+    totalRtcPrice = hostRtcPrice + audienceRtcPrice;
   }
-}
+};
+
+calculateRTCPrice("480p", 4, 0, 60, "conference");

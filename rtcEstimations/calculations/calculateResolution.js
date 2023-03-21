@@ -1,4 +1,4 @@
-import { RESOLUTION } from "../constants/videoRtcConstants";
+const RESOLUTION = require("../constants/videoRtcConstants");
 
 const totalResolutionSubscribed = (videoProfile, hostCount, channelMode) => {
   let aggregateHost = 0;
@@ -38,7 +38,7 @@ const videoStreamingVariant = (value) => {
     return RESOLUTION.TWOKPLUS;
   }
 };
-export const calculateAggregateVideoResolution = (
+module.exports = calculateAggregateVideoResolution = (
   videoProfile,
   hostCount,
   channelMode
